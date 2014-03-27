@@ -1,8 +1,9 @@
 Ply-Visualizer
 ==============
 
-Visualize the Stanford PLY file using Java Open GL wrapper libraries
+Visualize the Stanford PLY file using Java Open GL wrapper libraries.
 
+This software will soon be available on the Ubuntu software center!!
 
 Compile
 ==============
@@ -18,3 +19,5 @@ Run
 
 There is a compiled jar file in the bin folder for all those who donot want to spend time on compiling the project.
 Just open a terminal and execute: java -jar gl_test.jar and you are good to go.
+
+
