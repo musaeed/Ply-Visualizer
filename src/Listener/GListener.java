@@ -1,5 +1,6 @@
 package Listener;
 
+import java.awt.EventQueue;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -222,29 +223,44 @@ public class GListener implements GLEventListener{
 	}
 
 	public void parseFile(){
-		Parser parser = new Parser(currentFile);
-		parser.parse();
-		points = parser.getPoints();
-		triangles = parser.getTriangles();
-		Progressbar.setValue(90);
-		normals = Operations.getNormals(triangles, points);
-		Progressbar.setValue(100);
 		isNewFile = false;
-		Progressbar.setValue(0);
-		MainFrame.canvas.requestFocus();
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				
+				Parser parser = new Parser(currentFile);
+				parser.parse();
+				points = parser.getPoints();
+				triangles = parser.getTriangles();
+				Progressbar.setValue(90);
+				normals = Operations.getNormals(triangles, points);
+				Progressbar.setValue(100);
+				Progressbar.setValue(0);
+				MainFrame.canvas.requestFocus();
+				
+			}
+		});
 	}
 
 	public void parseStream(){
-		Parser parser = new Parser(BottomPanel.fileStream);
-		parser.parse();
-		points = parser.getPoints();
-		triangles = parser.getTriangles();
-		Progressbar.setValue(90);
-		normals = Operations.getNormals(triangles, points);
-		Progressbar.setValue(100);
 		isNewStream = false;
-		Progressbar.setValue(0);
-		MainFrame.canvas.requestFocus();
+		
+		EventQueue.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				Parser parser = new Parser(BottomPanel.fileStream);
+				parser.parse();
+				points = parser.getPoints();
+				triangles = parser.getTriangles();
+				Progressbar.setValue(90);
+				normals = Operations.getNormals(triangles, points);
+				Progressbar.setValue(100);
+				Progressbar.setValue(0);
+				MainFrame.canvas.requestFocus();
+			}
+		});
 	}
 
 	public FloatBuffer getFloatBuffer(float [] arr){

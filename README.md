@@ -5,6 +5,12 @@ Visualize the Stanford PLY file using Java Open GL wrapper libraries.
 
 This software will soon be available on the Ubuntu software center!!
 
+Package
+==============
+
+The application is ready to be installed on linux systems. Please find a debian package in the bin folder.
+
+
 Compile
 ==============
 
